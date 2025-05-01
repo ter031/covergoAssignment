@@ -8,8 +8,3 @@ export async function login(page: Page, username: string = TestData.VALID_USERNA
   await loginPage.login(username, password);
   await page.waitForURL(TestData.URLS.INVENTORY_PAGE);
 }
-
-export async function getErrorMessage(page: Page): Promise<string | null> {
-  const loginPage = new LoginPage(page);
-  return await loginPage.getErrorMessage();
-}

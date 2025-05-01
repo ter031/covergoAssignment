@@ -1,7 +1,8 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { login } from '../utils/HelperFunctions';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
+import { TestData } from '../utils/TestData';
 
 test.describe('Cart Functionality', () => {
     let inventoryPage: InventoryPage;
@@ -20,5 +21,15 @@ test.describe('Cart Functionality', () => {
 
         // Verify Checkout button is visible and enabled
         await cartPage.verifyCheckoutButton();
+    });
+
+    test('Verify user can navigate back to inventory page by clicking on Continue Shopping', async ({ page }) => {
+        // Go to cart page
+        await inventoryPage.goToCart();
+        await cartPage.verifyCartPage();
+
+        // Navigate back to the inventory page by clicking on Continue Shopping button and verify
+        await cartPage.goBackToInventoryPage();
+        await page.waitForURL(TestData.URLS.INVENTORY_PAGE);
     });
 });

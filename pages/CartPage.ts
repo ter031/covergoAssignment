@@ -6,6 +6,7 @@ export class CartPage {
   // Locators
   private checkoutButton = '[data-test="checkout"]';
   private cartUrl = /cart.html/;
+  private continueShoppingButton = '#continue-shopping';
 
   constructor(page: Page) {
     this.page = page;
@@ -23,5 +24,9 @@ export class CartPage {
 
   async goToCart(): Promise<void> {
     await this.page.goto('/cart.html');
+  }
+
+  async goBackToInventoryPage(): Promise<void> {
+    await this.page.click(this.continueShoppingButton);
   }
 }

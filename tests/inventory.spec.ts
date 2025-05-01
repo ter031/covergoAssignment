@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../utils/HelperFunctions';
-import { TestData } from '../utils/TestData';
 import { InventoryPage } from '../pages/InventoryPage';
 
 test.describe('Cart Functionality', () => {
